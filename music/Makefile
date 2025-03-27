@@ -6,15 +6,20 @@ SINGLEPRECISION	= no
 HAVEHDF5        = yes
 HAVEBOXLIB	= no
 BOXLIB_HOME     = ${HOME}/nyx_tot_sterben/BoxLib
-
+FFTW_INCL= -I/user1/poojarani/fftw-2.1.5/include
+FFTW_LIBS= -L/user1/poojarani/fftw-2.1.5/lib
+GSL_INCL= -I/user1/poojarani/gsl-2.5/include
+GSL_LIBS= -L/user1/poojarani/gsl-2.5/lib
+HDF5_INCL= -I/user1/poojarani/hdf5-1.13.1/include
+HDF5_LIBS= -L/user1/poojarani/hdf5-1.13.1/lib
 ##############################################################################
 ### compiler and path settings
-CC      = g++
+CC      = g++ -std=c++11
 OPT     = -Wall -Wno-unknown-pragmas -O3 -g -mtune=native
 CFLAGS  =  
 LFLAGS  = -lgsl -lgslcblas 
-CPATHS  = -I./src -I$(HOME)/local/include -I/opt/local/include -I/usr/local/include
-LPATHS  = -L$(HOME)/local/lib -L/opt/local/lib -L/usr/local/lib
+CPATHS  = -I./src -I$(HOME)/local/include -I/opt/local/include -I/usr/local/include $(FFTW_INCL) $(GSL_INCL) $(HDF5_INCL)
+LPATHS  = -L$(HOME)/local/lib -L/opt/local/lib -L/usr/local/lib $(FFTW_LIBS) $(GSL_LIBS) $(HDF5_LIBS)
 
 ##############################################################################
 # if you have FFTW 2.1.5 or 3.x with multi-thread support, you can enable the 
