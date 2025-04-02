@@ -1,0 +1,16 @@
+#!/bin/sh
+#PBS -l nodes=5:ppn=32
+##PBS -l mem=700gb
+##PBS -l select=12:ncpus=1
+#PBS -q temp
+#PBS -l cput=1000:00:00
+#PBS -l walltime=72:00:00
+#PBS -N lev3
+#PBS -o ramses.o
+#PBS -e ramses.e
+
+cd $PBS_O_WORKDIR
+
+module load mpi/openmpi-x86_64
+
+/usr/bin/time -v /usr/lib64/openmpi/bin/mpirun -np 160 -machinefile $PBS_NODEFILE  /user1/poojarani/Lya_Comparison/ramses/bin/ramses3d /user1/poojarani/Lya_Comparison/ramses/namelist/cosmo.nml
