@@ -1,14 +1,18 @@
 import os
 import subprocess
+import numpy as np
 
 # Base command for running the script
 base_command = ("/usr/bin/time -v /user1/poojarani/Lya_Comparison/ramses_codes/psgas {lev} {length} {output_folder} ")
 
 lev = 8 # Refinement level
-lengths = 100  # Box length(s)
+lengths = 512  # Box length(s)
+
+z=np.loadtxt(f"/user1/poojarani/Lya_Comparison/ramses_analysis/lev{lev:03}_len{lengths}/redshift.txt")
+n_outputs=len(z)
 
 # List of output numbers formatted correctly
-output_numbers = [x for x in range(1,10)]
+output_numbers = [x for x in range(1,n_outputs+1)]
 
 # Define the main job script directory
 job_script_dir = "/user1/poojarani/Lya_Comparison/ramses_analysis/lev{lev:03}_len{length}/PS_gas/job_scripts/".format(

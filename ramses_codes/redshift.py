@@ -1,6 +1,7 @@
 import numpy as np
 import yt
 import argparse
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-len","--boxsize", help="box size",default=100)
@@ -11,6 +12,8 @@ args = parser.parse_args()
 length= int(args.boxsize)
 lev=int(args.levelmin)
 n_out=int(args.output)
+
+os.makedirs(f"/user1/poojarani/Lya_Comparison/ramses_analysis/lev{lev:03}_len{length}/",exist_ok=True)
 
 f=open(f"/user1/poojarani/Lya_Comparison/ramses_analysis/lev{lev:03}_len{length}/redshift.txt","x")
 for i in range(n_out):

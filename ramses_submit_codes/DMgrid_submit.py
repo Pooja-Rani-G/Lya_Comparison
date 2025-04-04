@@ -1,5 +1,6 @@
 import os
 import subprocess
+import numpy as np
 
 # Base command for running the script
 base_command = ("/usr/bin/time -v /apps/Python/anaconda3/bin/python "
@@ -7,10 +8,13 @@ base_command = ("/usr/bin/time -v /apps/Python/anaconda3/bin/python "
                 "-o /user1/poojarani/Lya_Comparison/ramses_analysis/lev{lev:03}_len{length}/DM_grid/")
 
 lev = 8 # Refinement level
-lengths = 100  # Box length(s)
+lengths = 512 # Box length(s)
+
+z=np.loadtxt(f"/user1/poojarani/Lya_Comparison/ramses_analysis/lev{lev:03}_len{lengths}/redshift.txt")
+n_outputs=len(z)
 
 # List of output numbers formatted correctly
-output_numbers = [f"output_{x:05}" for x in range(1,10)]
+output_numbers = [f"output_{x:05}" for x in range(1,n_outputs+1)]
 
 # Define the main job script directory
 job_script_dir = "/user1/poojarani/Lya_Comparison/ramses_analysis/lev{lev:03}_len{length}/DM_grid/job_scripts/".format(
@@ -46,7 +50,7 @@ for output_number in output_numbers:
     job_script_content = f"""#!/bin/bash -l
 #PBS -N {job_log_base}
 #PBS -l walltime=72:00:00
-#PBS -l select=1:ncpus=1:mem=50gb
+#PBS -l select=1:ncpus=1:mem=10gb
 #PBS -o {output_log}
 #PBS -e {error_log}
 
