@@ -5,8 +5,8 @@ import numpy as np
 # Base command for running the script
 base_command = ("/usr/bin/time -v /user1/poojarani/Lya_Comparison/ramses_codes/psdm {lev} {length} {output_folder} ")
 
-lev = 8 # Refinement level
-lengths = 512  # Box length(s)
+lev = 10 # Refinement level
+lengths = 100  # Box length(s)
 
 z=np.loadtxt(f"/user1/poojarani/Lya_Comparison/ramses_analysis/lev{lev:03}_len{lengths}/redshift.txt")
 n_outputs=len(z)
@@ -48,11 +48,12 @@ for output_number in output_numbers:
     job_script_content = f"""#!/bin/bash -l
 #PBS -N {job_log_base}
 #PBS -l walltime=72:00:00
-#PBS -l select=1:ncpus=1:mem=5gb
+#PBS -l select=1:ncpus=1:mem=35gb
 #PBS -o {output_log}
 #PBS -e {error_log}
 
 cd $PBS_O_WORKDIR
+module load gsl-2.7.1
 
 {command}
 """

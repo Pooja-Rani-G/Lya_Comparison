@@ -7,8 +7,8 @@ base_command = ("/usr/bin/time -v /apps/Python/anaconda3/bin/python "
                 "/user1/poojarani/Lya_Comparison/ramses_codes/gas_grid.py -i /user1/poojarani/Lya_Comparison/ramses_data/lev{lev:03}_len{length}/{output_folder}/ -lm {lev} "
                 "-o /user1/poojarani/Lya_Comparison/ramses_analysis/lev{lev:03}_len{length}/Gas_grid/")
 
-lev = 8 # Refinement level
-lengths = 512  # Box length(s)
+lev = 10 # Refinement level
+lengths = 100  # Box length(s)
 
 z=np.loadtxt(f"/user1/poojarani/Lya_Comparison/ramses_analysis/lev{lev:03}_len{lengths}/redshift.txt")
 n_outputs=len(z)
@@ -50,7 +50,7 @@ for output_number in output_numbers:
     job_script_content = f"""#!/bin/bash -l
 #PBS -N {job_log_base}
 #PBS -l walltime=72:00:00
-#PBS -l select=1:ncpus=1:mem=50gb
+#PBS -l select=1:ncpus=1:mem=100gb
 #PBS -o {output_log}
 #PBS -e {error_log}
 

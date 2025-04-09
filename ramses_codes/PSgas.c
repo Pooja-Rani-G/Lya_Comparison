@@ -1,5 +1,5 @@
-//Compile as gcc PSgas.c -std=gnu99 -I/mnt/exports/data/install/fftw-3.3.8/include -L/mnt/exports/data/install/fftw-3.3.8/lib -lfftw3 -I${GSL_INCDIR} -L${GSL_LIBDIR} -lm -lgsl -lgslcblas -o psgas
-//Run as ./psgas
+//Compile as gcc PSgas.c -std=gnu99 -I/mnt/exports/data/install/fftw-3.3.8/include -L/mnt/exports/data/install/fftw-3.3.8/lib -lfftw3 -I/apps/gsl-2.7.1/include -L/apps/gsl-2.7.1/lib -lgsl -lgslcblas -lm -o psgas
+//Run as ./psgas {lev} {length} {output_forlder}
 
 #include <math.h> 
 #include <stdio.h> 

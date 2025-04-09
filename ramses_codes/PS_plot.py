@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-lev=8
-length=512
+lev=10
+length=100
 
 z=np.loadtxt(f"/user1/poojarani/Lya_Comparison/ramses_analysis/lev{lev:03}_len{length}/redshift.txt")
 n_outputs=len(z)
