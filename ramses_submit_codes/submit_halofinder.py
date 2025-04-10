@@ -6,7 +6,7 @@ import numpy as np
 base_command = "/usr/bin/time -v /apps/Python/anaconda3/bin/python /user1/poojarani/Lya_Comparison/ramses_codes/halofinder.py -i /user1/poojarani/Lya_Comparison/ramses_data/lev{lev:03}_len{length}/output_{output:05}/ -o /user1/poojarani/Lya_Comparison/ramses_data/lev{lev:03}_len{length}/Halo_data/"
 
 lev = 10 # Refinement level
-lengths = 100  # Box length(s)
+lengths = 200  # Box length(s)
 
 z=np.loadtxt(f"/user1/poojarani/Lya_Comparison/ramses_analysis/lev{lev:03}_len{lengths}/redshift.txt")
 n_outputs=len(z)
@@ -48,7 +48,7 @@ for output_number in output_numbers:
     job_script_content = f"""#!/bin/bash -l
 #PBS -N {job_log_base}
 #PBS -l walltime=72:00:00
-#PBS -l select=1:ncpus=1:mem=150gb
+#PBS -l select=1:ncpus=1:mem=175gb
 #PBS -o {output_log}
 #PBS -e {error_log}
 
