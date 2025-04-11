@@ -61,7 +61,7 @@ endif
 
 
 ifeq ($(SYSTYPE),"ccage")
-F90         = mpif90
+F90         = /usr/lib64/openmpi/bin/mpif90#-openmpi-gcc8
 #FFLAGS      = -g -fcheck=all -ffree-line-length-none -ffree-form -ftrapv -fbounds-check -fbacktrace
 FFLAGS      = -O3 -ffree-line-length-none -ffree-form
 FFLAGS += $(OPTIONS)

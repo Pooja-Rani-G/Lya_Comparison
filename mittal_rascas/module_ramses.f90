@@ -2978,7 +2978,12 @@ contains
     if(present(rt_info)) then ! read info_rt file
        if(rt_info)  infofile='/info_rt_'
     endif
-    write(filename,'(a,a,i5.5,a,i5.5,a)') trim(repository),'/output_',snapnum,trim(infofile),snapnum,'.txt'
+     ! Debug prints for configuration values:
+    write(*,*) 'DEBUG: repository = "', trim(repository), '"'
+    write(*,*) 'DEBUG: snapnum = ', snapnum
+    ! Construct the filename:
+    write(filename, '(a,a,i5.5,a,i5.5,a)') trim(repository), '/output_', snapnum, trim(infofile), snapnum, '.txt'
+    write(*,*) 'DEBUG: Constructed filename = "', trim(filename), '"' 
     open(unit=param_unit,file=filename,status='old',form='formatted')
     do 
        read(param_unit,'(a)',end=2) line
