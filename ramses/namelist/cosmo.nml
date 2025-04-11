@@ -20,7 +20,7 @@ aout=0.065,0.07,0.09,0.095,0.1,0.105
 /
 &INIT_PARAMS
 filetype='grafic'
-initfile(1)='/user1/poojarani/Lya_Comparison/music_ics_ramses/lev006_len200/'
+initfile(1)='/user1/poojarani/Lya_Comparison/music_ics_ramses/lev006_len100/'
 /
 &AMR_PARAMS
 levelmin=6
