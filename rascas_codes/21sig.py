@@ -20,8 +20,8 @@ import argparse
 import sys
 
 lev_hi=10
-lev_lo=6
-length=100
+lev_lo=8
+length=200
 halo_snap=8
 exp_of_photons=8
 

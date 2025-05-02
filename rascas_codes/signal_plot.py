@@ -6,7 +6,7 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.colors import LinearSegmentedColormap
 
 lev_hi=10
-lev_lo=6
+lev_lo=8
 length=100
 snap=8
 exp_of_photons=8
@@ -62,6 +62,7 @@ plt.savefig(save_path+"T21.png")
 plt.clf()  # Clears the current figure
 
 ############## lyman-a coupling #########################
+from matplotlib.colors import LogNorm
 
 # Load the data
 xa = np.load(path+"xa.npy")
@@ -82,7 +83,7 @@ print("Max value:", vmax)
 # Plot the x-y plane at the chosen z-index
 fig, ax = plt.subplots(figsize=(6, 6))
 im = ax.imshow(xa_avg[:, :], cmap='cool', origin='lower',
-               extent=[-length/2, length/2, -length/2, length/2])
+               extent=[-length/2, length/2, -length/2, length/2],norm=LogNorm(vmin=np.min(xa_avg), vmax=np.max(xa_avg)))
 # Divider for colorbar
 divider = make_axes_locatable(ax)
 cax = divider.append_axes("right", size="5%", pad=0.05)  # control size and spacing
